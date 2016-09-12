@@ -1,0 +1,52 @@
+@(provider: Provider)
+
+<md-dialog aria-label="@provider.getProvider_name()">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>@provider.getProvider_name()</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="@routes.Assets.versioned("images/icons/ic_close_24px.svg")" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div>
+            <strong>Phone: </strong>@provider.getTelephone_number()<br/>
+            <strong>AKA: </strong>@provider.getProvider_aka()<br/>
+            <strong>Description: </strong><em>@provider.getProvider_description()</em><br/>
+            <strong>Eligibility: </strong>@provider.getEligibility()<br/>
+            <strong>Handicap Access: </strong>
+                @(if(provider.getHandicap_access() == "t"){ "Handicap Access Available (" + provider.getHandicap_access() + ")" }
+                else if (provider.getHandicap_access() == null) { "Information NOT Available (" + provider.getHandicap_access() + ")" }
+                        else {"NOT Handicap Access Available (" + provider.getHandicap_access() + ")"})<br/>
+            <strong>Hours: </strong>@Html(provider.getHours().replace("\\n", "<br/>").replace("\\r", ""))<br/>
+            <strong>Intake Procedure: </strong>@provider.getIntake_procedure()<br/>
+            <strong>Languages: </strong>@provider.getLanguages()<br/>
+            <strong>Address: </strong>@provider.getLine1() @provider.getLine2()<br/>
+            @provider.getCity() @provider.getCounty() @provider.getPostal_code() @provider.getProvince() @provider.getCountry()
+            <br/><a href="@provider.getWebsite_address()" target="_blank">@provider.getWebsite_address()</a><br/>
+            <br/><strong>Needs:</strong>
+            <ul>
+            @for(n <- provider.getNeedses()){
+                <li>
+                @n.getName()
+                </li>
+            }
+            </ul>
+            <br/><strong>Target Population:</strong>
+            <ul>
+            @for(t <- provider.getTargetPopulation()){
+                <li>
+                    @t.getName()
+                </li>
+            }
+            </ul>
+        </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <md-button ng-click="hide()" class="md-primary">
+            Ok
+        </md-button>
+    </div>
+</md-dialog>

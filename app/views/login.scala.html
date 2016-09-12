@@ -1,0 +1,82 @@
+@(form: Form[Application.Login])
+
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Login - SwitchProvider Miami</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.css"/>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/app.css")" />
+    </head>
+
+    <style>
+        .whitepadding {
+            padding: 20px;
+            background-color: white;
+        }
+
+        body {
+            padding-top: 20px;
+            background-color: #039be5;
+        }
+    </style>
+
+    <body ng-app="loginApp" ng-controller="LoginCtrl as l" layout="column">
+
+        <div layout="row">
+            <div flex hide-md hide-sm></div>
+            <div flex class="md-whiteframe-z3 whitepadding">
+                <form action="@routes.Application.authenticate()" method="post">
+                    <div style="text-align: center;">
+                        <span class="md-display-2">Resource<strong>Locator</strong></span> <span class="md-subhead">beta</span>
+                        <br/><span class="md-headline">Sign in</span>
+                    </div>
+
+                    @if(form.hasGlobalErrors) {
+                        <p style="text-align: center; color: red;">
+                            @form.globalError.message
+                        </p>
+                    }
+
+                    <md-input-container class="md-icon-float" >
+                        <label>Username</label>
+                        <md-icon md-svg-src="@routes.Assets.versioned("images/icons/ic_person_24px.svg")" class="name"></md-icon>
+                        <input type="text" name="username" ng-model="l.username" type="text">
+                    </md-input-container>
+
+                    <md-input-container class="md-icon-float" >
+                        <label>Password</label>
+                        <md-icon md-svg-src="@routes.Assets.versioned("images/icons/ic_lock_24px.svg")" class="name"></md-icon>
+                        <input type="password" name="password" ng-model="l.password" type="text">
+                    </md-input-container>
+
+                    <div style="text-align: right;">
+                        <md-button class="md-raised md-primary">Login</md-button>
+                    </div>
+                </form>
+            </div>
+            <div flex hide-md hide-sm></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: #e3e3ff ;">
+            Copyright (c) 2015 by VectorAnalytica, Inc.
+        </div>
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.js"></script>
+
+            <script src="@routes.Assets.versioned("javascripts/loginApp.js")"></script>
+    </body>
+</html>

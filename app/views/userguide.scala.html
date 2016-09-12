@@ -1,0 +1,76 @@
+@()
+
+<md-dialog aria-label="Resource Locator User Guide">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Resource Locator User Guide</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="@routes.Assets.versioned("images/icons/ic_close_24px.svg")" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div>
+            <p><strong>Resource Locator</strong> is an application designed to help contact center counselors retrieve
+                information and referrals so they can provide better service to call-in customers. </p>
+            <p>Through a user-friendly interface, the counselor first enters the client's location and AIRS needs classification.</p>
+            <p><strong>Location</strong> can be provided either by entering the complete address, the zip code only, or as the client’s GPS
+                coordinates (either manually or by right clicking over the map at the desired location). To edit:
+                click on the location field (doing so will highlight the previous entry in blue); then write over with
+                a new location. Once this field is completed a red marker will appear on the map at the correct location.</p>
+            <p>Clicking on the <strong>Needs</strong> field displays a list of needs. A) Just click to select one need;
+                B) click while pressing down <strong>Ctrl</strong> to select more than one need. If more than one need,
+                click outside the area to complete selection and perform <strong>Search</strong>. (You can always delete a
+                need by clicking on the little <strong>x</strong> on the left of each need,
+                select a new need, or add others. In each case, however, click again on <strong>Search</strong>.)</p>
+            <p>With just a click on the <strong>Search</strong> button, <strong>Resource Locator</strong> generates a blue
+                marker on the map with the locations of service providers for the particular need(s) identified, sorted by
+                distance from the customer's stated location. Inside each marker, the number represents the order, by
+                distance, to the user’s location (represented by the red marker).</p>
+            <p>In order for counselors to more quickly, easily, and accurately retrieve all the information requested by
+                the client, the search can be further narrowed through four basic filters:</p>
+            <p><strong>Filters:</strong></p>
+            <ol>
+                <li><strong>Distance:</strong> The system searches within a circle centered at the GPS position reported
+                    by the client, and displays the results within the selected radius in miles. The default is five miles.</li>
+                <li><strong>Needs:</strong> The system searches only for those service providers that satisfy the number of
+                    needs selected on this filter.</li>
+                <li><strong>Providers:</strong> The map generated shows only the requested number of service providers
+                    closest to the reference provided by the client.</li>
+                <li><strong>Target Population:</strong> Particular populations have assigned service providers. When one
+                    of these populations is identified, the system displays only those providers assigned to that population.</li>
+            </ol>
+            <p><strong>Search result:</strong></p>
+            <p>Clicking on the <strong>Search</strong> button will display results as a map on the right of the screen and as
+                a list on the left (below the Search button). All results are numbered by distance from the client’s stated
+                location. Scrolling down the list and clicking on the <strong>Full Info</strong> button for each provider
+                reveals all available information for this provider. Left clicking directly on the blue map markers
+                displays an infowindow with basic provider information.</p>
+            <p><strong>Specifications:</strong></p>
+            <ul>
+                <li>If the <strong>Distance</strong> filter is deactivated, no search circle is displayed and the system
+                    shows all providers for all selected needs, regardless of distance.</li>
+                <li>When no provider meets the search criteria, an empty result is generated.</li>
+                <li>When any search criteria or filter is changed, you must update the search.</li>
+                <li>The red marker on the map indicates the client's stated location, from which distances are measured linearly.</li>
+                <li>Blue markers for your search are numbered and sorted by distance, measured from the client's stated
+                    location to the provider.</li>
+                <li>A jump in numbering within markers indicates that two or more providers have the same location. These
+                    can be identified in the search result list displayed <em>below</em> the search button.</li>
+                <li>The <strong>Reset</strong> button clears all fields to start a new search.</li>
+                <li>The <strong>Logout</strong> button on the top right closes the application and returns to the logged page.</li>
+            </ul>
+            <p><strong>Technical Specifications:</strong></p>
+            <ul>
+                <li>Google Chrome is recommended. (Due to Google's technology development, some items are not compatible with
+                    Internet Explorer.) Resource Locator has also been tested and works with Mozilla Firefox.</li>
+            </ul>
+        </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <md-button ng-click="hide()" class="md-primary">
+            Ok
+        </md-button>
+    </div>
+</md-dialog>
